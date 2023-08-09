@@ -1,11 +1,14 @@
 
 import './App.css'
+import Signup from './Signup'
 
 function App() {
   
   return (
     <>
-    hii there
+    <div style={{width:"100vw",height:"100vh",background:'#eeeeee'}}>
+  <Signup></Signup>
+  </div>
    
     </>
   )
