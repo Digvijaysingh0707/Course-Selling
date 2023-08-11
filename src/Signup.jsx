@@ -30,6 +30,7 @@ function Signup() {
               function callback2(data) {
                 console.log(data)
                 localStorage.setItem("token", data.token)
+                window.location='/'
               }
               function callback1(res) {
                 res.json().then(callback2)
