@@ -31,7 +31,7 @@ function AddCourse() {
           onClick={() => {
             function callback2(data) {
               console.log(data)
-              localStorage.setItem("token", data.token)
+              // localStorage.setItem("token", data.token)
             }
             function callback1(res) {
               res.json().then(callback2)
@@ -39,7 +39,7 @@ function AddCourse() {
             fetch("http://localhost:3001/admin/courses", {
               method: "POST",
               body: JSON.stringify({
-                title, description
+                title, description, imageLink: "", published: true
               }),
               headers: {
                 "Content-type": "application/json",

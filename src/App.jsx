@@ -5,6 +5,7 @@ import Appbar from './Appbar'
 import Signup from './Signup'
 import Signin from './Signin'
 import AddCourse from './AddCourse'
+import Courses from './Courses'
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
 
         <Routes>
           <Route path={"/addcourse"} element={<AddCourse />} />
+          <Route path={"/courses"} element={<Courses />} />
+
           <Route path="/login" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
