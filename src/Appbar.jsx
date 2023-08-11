@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const Appbar = () => {
   const navigate = useNavigate()
   const [userEmail, setUserEmail] = useState(null)
+  const [loader,setLoader]=useState(false)
 
   const handleSignin = () => {
     navigate('/login')
@@ -18,9 +19,13 @@ const Appbar = () => {
   useEffect(() => {
     function callback2(data) {
       if (data?.username) setUserEmail(data?.username)
+      setLoader(false)
+
       // console.log(data)
     }
     function callback1(res) {
+      setLoader(true)
+
       res.json().then(callback2)
     }
     fetch("http://localhost:3001/admin/me", {
@@ -41,7 +46,11 @@ const Appbar = () => {
             <>
               <div style={{ display: 'flex' }}>
                 <div style={{ marginTop: '10px' }}>{userEmail}</div>
-                <Button onClick={() => localStorage.removeItem("token")}>Log out</Button>
+                <Button onClick={() => {
+                  localStorage.removeItem("token")
+                  window.location='/'
+                }
+                }>Log out</Button>
               </div>
             </> :
             <>
