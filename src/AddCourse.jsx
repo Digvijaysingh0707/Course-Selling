@@ -4,6 +4,8 @@ import { useState } from "react"
 function AddCourse() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [image, setImage] = useState('')
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
 
@@ -25,6 +27,14 @@ function AddCourse() {
           label="Description"
           variant="outlined"
         />
+         <TextField
+          onChange={(e) => {
+            setImage(e.target.value)
+          }}
+          fullWidth
+          label="Image Link"
+          variant="outlined"
+        />
         <Button
           size={"large"}
           variant="contained"
@@ -39,7 +49,7 @@ function AddCourse() {
             fetch("http://localhost:3001/admin/courses", {
               method: "POST",
               body: JSON.stringify({
-                title, description, imageLink: "", published: true
+                title, description, imageLink: image, published: true
               }),
               headers: {
                 "Content-type": "application/json",
