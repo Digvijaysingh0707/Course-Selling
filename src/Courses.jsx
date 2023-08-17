@@ -20,21 +20,22 @@ function Courses() {
     }).then(callback1);
   }, []);
   return <div style={{ display: 'flex',flexWrap:'wrap',justifyContent:'center' }}>
-    {courses?.map(obj => {
-      return <Course course={obj} />
+    {courses?.map((obj) => {
+      return <Course key={obj.id} course={obj} />
     })}
 
 
   </div>;
 }
 
-function Course(props) {
+ export function Course(props) {
   return <Card style={{
-    // border: "2px solid black",
     margin: 10,
     width: 300,
     minHeight: 200
   }}>
+        {/* <Typography textAlign={"center"} variant="h6"> {props.index}</Typography> */}
+
     <Typography textAlign={"center"} variant="h6"> {props.course.title}</Typography>
     <Typography textAlign={"center"} variant="subtitle1">{props.course.description}</Typography>
     <img src={props?.course?.imageLink} style={{ width: 300, height: 200 }}></img>
