@@ -1,4 +1,4 @@
-import { Card, Typography } from "@mui/material";
+import { Typography, Button, Card, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -42,14 +42,17 @@ function Course() {
     
     return <div>
        <CourseCard course={course}/>
+       <UpdateCard course={course}/>
+
     </div>
 
 }
 
-function UpdateCard(){
+function UpdateCard({props}){
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
+    // const course=props.course 
   
     return <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Typography>Update Course Details</Typography>
@@ -91,7 +94,7 @@ function UpdateCard(){
           function callback1(res) {
             res.json().then(callback2)
           }
-          fetch("http://localhost:3001/admin/courses", {
+          fetch("http://localhost:3001/admin/courses" + courseId, {
             method: "PUT",
             body: JSON.stringify({
               title, description, imageLink: image, published: true
